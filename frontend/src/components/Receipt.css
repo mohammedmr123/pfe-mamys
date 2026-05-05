@@ -1,0 +1,92 @@
+/* Styles pour l'impression du ticket */
+.receipt-container {
+  display: none; /* Caché par défaut dans l'interface */
+  width: 80mm; /* Largeur standard ticket thermique */
+  padding: 5mm;
+  font-family: 'Courier New', Courier, monospace;
+  color: #000;
+  background: #fff;
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 5mm;
+}
+
+.receipt-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.receipt-header p {
+  margin: 1mm 0;
+  font-size: 0.8rem;
+}
+
+.receipt-divider {
+  border-top: 1px dashed #000;
+  margin: 3mm 0;
+}
+
+.receipt-info {
+  font-size: 0.8rem;
+  margin-bottom: 3mm;
+}
+
+.receipt-items {
+  width: 100%;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+}
+
+.receipt-items th {
+  text-align: left;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1mm;
+}
+
+.receipt-items td {
+  padding: 1mm 0;
+}
+
+.receipt-total {
+  margin-top: 3mm;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.receipt-footer {
+  text-align: center;
+  margin-top: 5mm;
+  font-size: 0.8rem;
+}
+
+.receipt-qr {
+  margin-top: 3mm;
+  display: flex;
+  justify-content: center;
+}
+
+/* Affichage uniquement lors de l'impression */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .receipt-container, .receipt-container * {
+    visibility: visible;
+  }
+  .receipt-container {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Supprimer les marges par défaut du navigateur */
+  @page {
+    margin: 0;
+  }
+}
