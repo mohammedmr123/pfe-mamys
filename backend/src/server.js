@@ -6,7 +6,11 @@ const path = require('path');
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: '*', // Autoriser toutes les sources pour le moment (plus simple pour le PFE)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, '../../frontend/public/images')));
 
